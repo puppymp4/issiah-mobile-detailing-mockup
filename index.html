@@ -25,10 +25,10 @@
 <link rel="preconnect" href="https://static.wixstatic.com" crossorigin />
 <link rel="preload" as="image" fetchpriority="high" href="https://static.wixstatic.com/media/7a6c57_6eb080b56ba34b73bdbc2e8a6939ac26~mv2.webp/v1/fill/w_1600,h_1100,al_c,q_85,enc_auto/hero.webp" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+<link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,600,700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,600,700&display=swap" /></noscript>
 
 <script type="application/ld+json">
 {
@@ -141,8 +141,8 @@
     --radius-lg:22px;
     --radius-xl:32px;
 
-    --serif:"Fraunces",ui-serif,Georgia,serif;
-    --sans:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+    --serif:"Clash Display",ui-sans-serif,system-ui,sans-serif;
+    --sans:"Satoshi",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
   }
 
   *{box-sizing:border-box}
@@ -179,11 +179,10 @@
   h1,h2,h3,h4{
     font-family:var(--serif);
     font-weight:600;
-    letter-spacing:-.015em;
+    letter-spacing:-.02em;
     line-height:1.08;
     margin:0;
     color:var(--ink);
-    font-variation-settings:"opsz" 144;
   }
   h1{font-size:clamp(40px,7vw,80px);font-weight:600}
   h2{font-size:clamp(30px,4.6vw,52px);font-weight:600}
@@ -204,7 +203,7 @@
 
   .lead{font-size:18px;line-height:1.6;color:var(--ink-2);max-width:var(--prose)}
 
-  em{font-style:italic;color:var(--ink);font-family:var(--serif);font-weight:500}
+  em{font-style:normal;color:var(--ink);font-family:var(--serif);font-weight:500}
   .num{font-variant-numeric:tabular-nums}
 
   /* Layout utilities */
@@ -383,7 +382,7 @@
   .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 
   .hero h1{margin-bottom:20px}
-  .hero h1 em{color:var(--accent);font-style:italic;font-weight:500}
+  .hero h1 em{color:var(--accent);font-style:normal;font-weight:500}
   .hero .lead{font-size:19px;margin-bottom:36px;max-width:560px}
   @media(min-width:768px){.hero .lead{font-size:20px}}
 
@@ -491,7 +490,7 @@
   /* Services */
   .section-head{margin-bottom:56px;max-width:720px}
   .section-head h2{margin-bottom:18px}
-  .section-head h2 em{color:var(--accent);font-style:italic;font-weight:500}
+  .section-head h2 em{color:var(--accent);font-style:normal;font-weight:500}
   .section-head p{color:var(--ink-2);font-size:17px;line-height:1.6}
 
   .services-grid{
@@ -734,7 +733,7 @@
     position:relative;z-index:1;
   }
   .final-cta h2{margin-bottom:20px}
-  .final-cta h2 em{color:var(--accent);font-style:italic;font-weight:500}
+  .final-cta h2 em{color:var(--accent);font-style:normal;font-weight:500}
   .final-cta > .container > .final-cta-inner > p.lead-p{color:var(--ink-2);font-size:18px;line-height:1.6;margin-bottom:40px;max-width:560px;margin-left:auto;margin-right:auto}
 
   /* Quote form */
@@ -796,7 +795,7 @@
     font-family:var(--serif);font-size:26px;font-weight:600;
     margin-bottom:8px;letter-spacing:-.01em;line-height:1.15;
   }
-  .qf-panel h3 em{color:var(--accent);font-style:italic;font-weight:500}
+  .qf-panel h3 em{color:var(--accent);font-style:normal;font-weight:500}
   .qf-panel > p{color:var(--ink-2);font-size:15px;margin-bottom:28px;line-height:1.55}
 
   .qf-field{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
@@ -947,7 +946,7 @@
     display:flex;justify-content:space-between;align-items:center;
     gap:16px;flex-wrap:wrap;font-size:12px;color:var(--ink-4);
   }
-  .footer-bottom .mini{font-family:var(--serif);font-style:italic}
+  .footer-bottom .mini{font-family:var(--serif);font-style:normal}
 
   /* Scroll reveal */
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1)}

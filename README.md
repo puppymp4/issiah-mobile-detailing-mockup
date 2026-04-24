@@ -15,7 +15,7 @@ Built by [Rift Media](https://riftmedia.cc).
 Single-file static HTML + CSS + vanilla JS. No build step. Hosted on Vercel.
 
 Highlights:
-- Editorial serif + clean sans typography (Fraunces + Inter, per font-library pairing #2)
+- Clash Display + Satoshi typography (font-library pairing #3 "Confident Modern" - premium without editorial drama)
 - Warm graphite + saffron palette - distinct from prior prospect builds (no recycled theme)
 - Hero focused on the mobile promise ("The interior you forgot your car had")
 - Trust stack pulls real Google review data: 4.9 stars, 173 reviews, 5+ years
