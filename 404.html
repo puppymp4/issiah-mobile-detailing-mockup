@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Page not found - Issiah Mobile Auto Detailing</title>
+<meta name="description" content="That page pulled out of the driveway. Head back to Issiah Mobile Auto Detailing in Sacramento." />
+<meta name="theme-color" content="#0D100F" />
+<meta name="robots" content="noindex" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" />
+
+<style>
+  :root{
+    --bg:#0D100F;
+    --surface:#171C1E;
+    --line:rgba(245,239,228,.08);
+    --line-2:rgba(245,239,228,.14);
+    --ink:#F5EFE4;
+    --ink-2:#C5BFB3;
+    --ink-3:#8A847A;
+    --accent:#E8A23B;
+    --accent-2:#FFC26B;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Inter",system-ui,sans-serif;
+    background:
+      radial-gradient(900px 500px at 50% 20%, rgba(232,162,59,.08), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+    display:grid;place-items:center;
+    padding:40px 24px;
+    line-height:1.6;
+  }
+  .wrap{max-width:560px;text-align:center}
+  .tag{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:7px 14px;
+    border:1px solid var(--line-2);
+    border-radius:999px;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:600;color:var(--ink-2);
+    background:rgba(245,239,228,.03);
+    margin-bottom:28px;
+  }
+  .tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .code{
+    font-family:"Fraunces",serif;font-weight:700;
+    font-size:clamp(96px,20vw,180px);
+    line-height:.9;letter-spacing:-.04em;
+    background:linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;
+    margin-bottom:12px;
+  }
+  h1{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(28px,4vw,40px);letter-spacing:-.015em;
+    line-height:1.15;margin-bottom:16px;
+  }
+  h1 em{color:var(--accent);font-style:italic;font-weight:500}
+  p{color:var(--ink-2);font-size:17px;margin-bottom:32px}
+  .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 22px;border-radius:999px;
+    font-weight:600;font-size:15px;
+    transition:transform .2s ease, background .2s ease, color .2s ease;
+    text-decoration:none;cursor:pointer;border:none;
+  }
+  .btn-primary{
+    background:var(--accent);color:#0D100F;
+    box-shadow:0 4px 20px rgba(232,162,59,.25), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .btn-primary:hover{transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line-2)}
+  .btn-ghost:hover{background:var(--surface)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <span class="tag"><span class="dot" aria-hidden="true"></span> Took a wrong turn</span>
+  <div class="code" aria-hidden="true">404</div>
+  <h1>That page isn't in the <em>driveway.</em></h1>
+  <p>The link you followed doesn't exist. Head home, or give us a call - we'll get you sorted faster than any menu can.</p>
+  <div class="actions">
+    <a href="/" class="btn btn-primary">Back to home</a>
+    <a href="tel:+19167077455" class="btn btn-ghost">Call (916) 707-7455</a>
+  </div>
+</main>
+</body>
+</html>
