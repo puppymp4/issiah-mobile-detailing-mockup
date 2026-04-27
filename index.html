@@ -1015,11 +1015,146 @@
   .show-sm{display:inline}
   @media(min-width:768px){.show-sm{display:none}}
 
+  /* ====== RIFT MEDIA SPEC OVERLAY ====== */
+  /* First-visit intro modal */
+  .rm-modal{
+    position:fixed;inset:0;z-index:9000;
+    display:none;align-items:center;justify-content:center;
+    padding:20px;
+    background:rgba(8,10,9,.72);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    opacity:0;transition:opacity .35s ease;
+  }
+  .rm-modal.is-open{display:flex;opacity:1}
+  .rm-modal-card{
+    width:100%;max-width:520px;
+    background:linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+    border:1px solid var(--line-2);
+    border-radius:var(--radius-lg);
+    padding:36px 32px 28px;
+    box-shadow:var(--shadow-lg);
+    transform:translateY(12px) scale(.98);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    position:relative;
+  }
+  .rm-modal.is-open .rm-modal-card{transform:translateY(0) scale(1)}
+  .rm-modal-eyebrow{
+    font-family:var(--sans);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;font-weight:600;color:var(--accent);
+    margin-bottom:14px;display:flex;align-items:center;gap:8px;
+  }
+  .rm-modal-eyebrow::before{
+    content:"";width:6px;height:6px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 12px var(--accent-glow);
+  }
+  .rm-modal-card h3{
+    font-family:var(--serif);font-size:clamp(24px,3.6vw,30px);
+    line-height:1.15;margin-bottom:14px;
+  }
+  .rm-modal-card p{
+    color:var(--ink-2);font-size:15px;line-height:1.6;margin-bottom:8px;
+  }
+  .rm-modal-card p + p{margin-top:6px}
+  .rm-modal-actions{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;
+  }
+  .rm-btn-primary{
+    background:var(--accent);color:#0D100F;
+    padding:12px 20px;border-radius:10px;
+    font-weight:600;font-size:14px;
+    border:none;cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .rm-btn-primary:hover{background:var(--accent-2);transform:translateY(-1px);box-shadow:var(--shadow-glow)}
+  .rm-btn-ghost{
+    background:transparent;color:var(--ink-2);
+    padding:12px 18px;border-radius:10px;
+    font-weight:500;font-size:14px;
+    border:1px solid var(--line-2);cursor:pointer;
+    transition:color .2s, border-color .2s;
+  }
+  .rm-btn-ghost:hover{color:var(--ink);border-color:var(--line-3)}
+  .rm-modal-foot{
+    margin-top:18px;padding-top:16px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--ink-3);
+    display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+  }
+  .rm-modal-foot a{color:var(--ink-2);border-bottom:1px solid var(--line-2)}
+  .rm-modal-foot a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* Persistent floating pill (always visible after modal dismiss) */
+  .rm-pill{
+    position:fixed;bottom:18px;right:18px;z-index:8500;
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 14px 9px 11px;
+    background:rgba(13,16,15,.92);
+    border:1px solid var(--line-2);
+    border-radius:999px;
+    box-shadow:var(--shadow-md);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    font-family:var(--sans);font-size:12.5px;font-weight:500;
+    color:var(--ink-2);cursor:pointer;
+    transition:transform .2s ease, border-color .2s, color .2s, box-shadow .2s;
+    opacity:0;transform:translateY(8px);
+    animation:rmPillIn .5s .4s ease forwards;
+  }
+  @keyframes rmPillIn{to{opacity:1;transform:translateY(0)}}
+  .rm-pill:hover{
+    transform:translateY(-2px);border-color:var(--accent);color:var(--ink);
+    box-shadow:0 14px 36px rgba(0,0,0,.5), 0 0 0 1px var(--accent-glow);
+  }
+  .rm-pill-dot{
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);box-shadow:0 0 10px var(--accent-glow);
+    flex-shrink:0;
+  }
+  .rm-pill-cta{color:var(--accent);font-weight:600;margin-left:2px}
+  @media(max-width:480px){
+    .rm-pill{bottom:14px;right:14px;font-size:12px;padding:8px 12px 8px 10px}
+    .rm-pill-cta{display:none}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .rm-modal,.rm-modal-card,.rm-pill{transition:none;animation:none;opacity:1;transform:none}
+  }
+
 </style>
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
+
+<!-- RIFT MEDIA SPEC INTRO MODAL -->
+<div class="rm-modal" id="rmModal" role="dialog" aria-modal="true" aria-labelledby="rmModalTitle" aria-describedby="rmModalDesc">
+  <div class="rm-modal-card">
+    <div class="rm-modal-eyebrow">Spec build by Rift Media</div>
+    <h3 id="rmModalTitle">Hey, this site was built for Issiah - free of charge.</h3>
+    <p id="rmModalDesc">I'm Rift, an automotive videographer and web designer based in Sacramento. I built this as a working sample of what your shop's site could look like. Have a scroll, see what hits.</p>
+    <p>If you ever want one for your business - this exact build, your branding - I'm one tap away.</p>
+    <div class="rm-modal-actions">
+      <a class="rm-btn-primary" href="sms:+15597218045?&body=Hey%20Sandeep%2C%20I%27m%20interested%20in%20a%20website%20like%20this%20for%20my%20business.%20%28Came%20from%20the%20Issiah%20Mobile%20Detailing%20mockup.%29">
+        Get this website
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+      <button class="rm-btn-ghost" type="button" data-rm-dismiss>Take a look around</button>
+    </div>
+    <div class="rm-modal-foot">
+      <a href="mailto:rift.clb.media@gmail.com">rift.clb.media@gmail.com</a>
+      <a href="https://instagram.com/rift.clb" target="_blank" rel="noopener">@rift.clb</a>
+      <a href="https://riftmedia.cc" target="_blank" rel="noopener">riftmedia.cc</a>
+    </div>
+  </div>
+</div>
+
+<!-- PERSISTENT FLOATING CTA PILL -->
+<a class="rm-pill" id="rmPill" href="https://riftmedia.cc" target="_blank" rel="noopener" aria-label="Spec design by Rift Media - get a site like this">
+  <span class="rm-pill-dot" aria-hidden="true"></span>
+  <span>Spec by Rift Media</span>
+  <span class="rm-pill-cta">Get yours &rarr;</span>
+</a>
 
 <!-- HEADER -->
 <header class="header">
@@ -1043,7 +1178,7 @@
         <span class="hide-sm">(916) 707-7455</span>
         <span class="show-sm">Call</span>
       </a>
-      <a href="#book" class="btn btn-primary btn-sm">Book a detail</a>
+      <a href="sms:+15597218045?&body=Hey%20Sandeep%2C%20I%27m%20interested%20in%20a%20website%20like%20this%20for%20my%20business.%20%28Came%20from%20the%20Issiah%20Mobile%20Detailing%20mockup.%29" class="btn btn-primary btn-sm">Get this website</a>
       <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" id="menu-open">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
       </button>
@@ -1072,7 +1207,7 @@
     <a href="#faq">FAQ</a>
   </nav>
   <div class="mobile-menu-footer">
-    <a href="#book" class="btn btn-primary btn-lg">Book a detail</a>
+    <a href="sms:+15597218045?&body=Hey%20Sandeep%2C%20I%27m%20interested%20in%20a%20website%20like%20this%20for%20my%20business.%20%28Came%20from%20the%20Issiah%20Mobile%20Detailing%20mockup.%29" class="btn btn-primary btn-lg">Get this website</a>
     <a href="tel:+19167077455" class="btn btn-ghost btn-lg">Call (916) 707-7455</a>
   </div>
 </div>
@@ -1093,7 +1228,7 @@
             Issiah pulls up to your driveway in Sacramento. A few hours later, your car smells, feels, and looks brand new. No drop-off, no waiting room, no rearranging your day.
           </p>
           <div class="hero-actions">
-            <a href="#book" class="btn btn-primary btn-lg">Book a detail</a>
+            <a href="sms:+15597218045?&body=Hey%20Sandeep%2C%20I%27m%20interested%20in%20a%20website%20like%20this%20for%20my%20business.%20%28Came%20from%20the%20Issiah%20Mobile%20Detailing%20mockup.%29" class="btn btn-primary btn-lg">Get this website</a>
             <a href="tel:+19167077455" class="btn btn-ghost btn-lg">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               (916) 707-7455
@@ -1209,7 +1344,7 @@
             <p>The complete reset. Seats, carpet, and mats get shampooed and extracted. Dashboard, door panels, and console get conditioned to prevent fading and cracking. Vents, cupholders, and every seam the factory forgot - handled.</p>
             <div class="svc-meta">
               <span class="price">Pricing: <strong>Text for quote</strong></span>
-              <a href="#book" class="cta">Book it &rarr;</a>
+              <a href="https://riftmedia.cc" target="_blank" rel="noopener" class="cta">Get yours &rarr;</a>
             </div>
           </div>
         </article>
@@ -1226,7 +1361,7 @@
             <p>That smell you stopped noticing - your passengers still do. We pull out 90-95% of trapped odors from seats, carpet, and air vents. Smoke, pet, food, or the one you can't quite place. Multi-step process, not a bottle of Febreze.</p>
             <div class="svc-meta">
               <span class="price">Pricing: <strong>From $X - text for quote</strong></span>
-              <a href="#book" class="cta">Book it &rarr;</a>
+              <a href="https://riftmedia.cc" target="_blank" rel="noopener" class="cta">Get yours &rarr;</a>
             </div>
           </div>
         </article>
@@ -1243,7 +1378,7 @@
             <p>Mold on fabric, mold on plastic, mold in the vents. We clean every affected surface and treat the cabin air to kill circulating spores. For families with kids, allergy sufferers, or anyone who's opened their door to that damp smell - this is the job.</p>
             <div class="svc-meta">
               <span class="price">Pricing: <strong>Varies by severity</strong></span>
-              <a href="#book" class="cta">Book it &rarr;</a>
+              <a href="https://riftmedia.cc" target="_blank" rel="noopener" class="cta">Get yours &rarr;</a>
             </div>
           </div>
         </article>
@@ -1260,7 +1395,7 @@
             <p>Leaking sunroof. Cracked window seal. That massive iced coffee that tipped over between the seats. We use pro extraction equipment to pull water out before it becomes mold, rust, or permanent damage. Call the same day if it just happened.</p>
             <div class="svc-meta">
               <span class="price">Pricing: <strong>Same-day estimate</strong></span>
-              <a href="#book" class="cta">Book it &rarr;</a>
+              <a href="https://riftmedia.cc" target="_blank" rel="noopener" class="cta">Get yours &rarr;</a>
             </div>
           </div>
         </article>
@@ -1700,6 +1835,10 @@
       <span>&copy; <span class="js-year">2026</span> Issiah Mobile Auto Detailing. All rights reserved.</span>
       <span class="mini">Serving Sacramento, CA &mdash; mobile since 2021.</span>
     </div>
+    <div class="footer-bottom" style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px;color:var(--ink-3);font-size:12px">
+      <span>Spec design built free for Issiah by <a href="https://riftmedia.cc" target="_blank" rel="noopener" style="color:var(--ink-2);border-bottom:1px solid var(--line-2)">Rift Media</a> &middot; Sacramento web + video for automotive shops.</span>
+      <span class="mini"><a href="mailto:rift.clb.media@gmail.com" style="color:var(--ink-2);border-bottom:1px solid var(--line-2)">rift.clb.media@gmail.com</a> &middot; <a href="https://instagram.com/rift.clb" target="_blank" rel="noopener" style="color:var(--ink-2);border-bottom:1px solid var(--line-2)">@rift.clb</a></span>
+    </div>
   </div>
 </footer>
 
@@ -1707,6 +1846,43 @@
   // Year auto-update
   var y = document.querySelector('.js-year');
   if (y) y.textContent = new Date().getFullYear();
+
+  // Rift Media spec intro modal - shows once per visitor (localStorage), pill stays forever
+  (function(){
+    var modal = document.getElementById('rmModal');
+    if (!modal) return;
+    var KEY = 'rm-spec-intro-seen-v1';
+    var seen = false;
+    try { seen = localStorage.getItem(KEY) === '1'; } catch(_){ }
+
+    var open = function(){
+      modal.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    };
+    var close = function(){
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+      try { localStorage.setItem(KEY, '1'); } catch(_){ }
+    };
+
+    if (!seen) {
+      // Slight delay so first paint feels stable, not jumpy
+      setTimeout(open, 650);
+    }
+
+    modal.addEventListener('click', function(e){
+      if (e.target === modal) close();
+    });
+    modal.querySelectorAll('[data-rm-dismiss]').forEach(function(btn){
+      btn.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    });
+    // Primary CTA also dismisses (so if they come back from the SMS app, modal is gone)
+    var primary = modal.querySelector('.rm-btn-primary');
+    if (primary) primary.addEventListener('click', function(){ close(); });
+  })();
 
   // Sticky header elevation
   var header = document.querySelector('.header');
